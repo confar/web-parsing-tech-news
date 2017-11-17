@@ -15,8 +15,10 @@ resultsvc = soup.find_all('div', 'feed__item')
 recordsvc = []
 for result in resultsvc:
     author = result.find('span', 'entry_header__author__name')
-    if author is not None:
+    try:
         author = result.find('span', 'entry_header__author__name').text.strip()
+    except:
+        pass
     title = result.find('h2').text.strip()
     desc = result.find('p').text.strip()
     link = result.find('a')['href']
